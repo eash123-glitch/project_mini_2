@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Captioning and Speech</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .container {
+            width: 50%;
+            margin: auto;
+            text-align: center;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        .audio-player {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Upload an Image to Generate Captions and Speech</h1>
+    
+    <!-- Image Upload Form -->
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" id="image" accept="image/*" required>
+        <br><br>
+        <button type="submit">Upload Image</button>
+    </form>
+
+    {% if audio_file %}
+        <div class="audio-player">
+            <h2>Generated Speech:</h2>
+            <audio controls>
+                <source src="{{ url_for('static', filename=audio_file) }}" type="audio/mp3">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
